@@ -4,6 +4,8 @@
 
 @import url(../blocks/page/page.css);
 
+@import url(../blocks/page/__button/page__button.css);
+
 @import url(../blocks/root/root.css);
 
 @import url(../blocks/header/header.css);
@@ -13,8 +15,6 @@
 @import url(../blocks/header/__logo/header__logo.css);
 
 @import url(../blocks/main/main.css);
-
-@import url(../blocks/main/__button/main__button.css);
 
 @import url(../blocks/main/__icon/main__icon.css);
 
