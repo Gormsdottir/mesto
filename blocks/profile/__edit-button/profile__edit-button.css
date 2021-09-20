@@ -1,0 +1,23 @@
+.profile__edit-button {
+    margin-bottom: 12px;
+    width: 24px;
+    height: 24px;
+    align-self: end;
+    justify-self: start;
+    grid-area: edit;
+    background-image: url(../../../images/editButton.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 2px;
+    border: 1px solid white;
+}
+
+@media all and (max-width: 767px) {
+    .profile__edit-button {
+        margin: 0;
+        width: 18px;
+        height: 18px;
+        align-self: center;
+        justify-self: start;
+    }
+}

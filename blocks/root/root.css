@@ -1,0 +1,17 @@
+.root {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 880px;
+}
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+    .root {
+        max-width: 581px;
+    }
+}
+
+@media all and (max-width: 767px) {
+    .root {
+        max-width: 320px;
+    }
+}

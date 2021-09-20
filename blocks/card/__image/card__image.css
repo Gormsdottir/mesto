@@ -1,0 +1,9 @@
+.card__image {
+    border: none;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    width: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: 10px 10px 0 0;
+}
