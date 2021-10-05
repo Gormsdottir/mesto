@@ -1,17 +1,15 @@
 let popup = document.querySelector('.popup');
-let btnEditProfile = document.querySelector('.profile__edit-button');
-let btnClosepopup = document.querySelector('.popup__close-button');
+let btnEditProfile = document.querySelector('.button_type_edit-profile');
+let btnClosepopup = document.querySelector('.button_type_close-popup');
 
 let profileName = document.querySelector('.profile__name');
 let profileOccupation = document.querySelector('.profile__occupation');
 
-
-let popupName = document.querySelector('.popup__input_name');
-let popupOccupation = document.querySelector('.popup__input_occupation');
-
+let popupName = document.querySelector('.popup__input_type_name');
+let popupOccupation = document.querySelector('.popup__input_type_occupation');
 
 function openPopup() {
-    popup.classList.add('popup__opened');
+    popup.classList.add('popup_opened');
 }
 
 function setPopupInputValue() {
@@ -20,7 +18,7 @@ function setPopupInputValue() {
 }
 
 function closePopup() {
-    popup.classList.remove('popup__opened');
+    popup.classList.remove('popup_opened');
 }
 
 function setPopupTextValue() {
