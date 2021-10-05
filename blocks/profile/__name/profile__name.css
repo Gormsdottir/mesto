@@ -9,6 +9,9 @@
     font-size: 42px;
     line-height: 48px;
     color: #FFF;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 @media all and (max-width: 767px) {
