@@ -3,7 +3,7 @@
     padding: 40px 0 51px;
     width: 100%;
     display: grid;
-    grid-template-columns: 168px auto max-content 1fr max-content;
+    grid-template-columns: 140px auto max-content 1fr max-content;
     grid-template-areas:
         "image name edit . add"
         "image occupation . . add";
