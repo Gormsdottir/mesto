@@ -32,9 +32,9 @@
                     Исследователь океана
                 </p>
 
-                <button class="profile__edit-button page__button" type="button"></button>
+                <button type="button" class="button_type_edit-profile button" aria-label="Изменить"></button>
 
-                <button class="profile__add-button page__button" type="button"></button>
+                <button type="button" class="button_type_add-card button" aria-label="Добавить"></button>
 
             </section>
 
@@ -45,42 +45,42 @@
                         <h3 class="card__title">
                             Карачаевск
                         </h3>
-                        <button class="card__like" aria-hidden="true"></button>
+                        <button type="button" class="button_type_like" aria-label="Нравится"></button>
                     </li>
                     <li class="card">
                         <img src="./images/grid-photo-2.jpg" class="card__image" alt="фото карточки">
                         <h3 class="card__title">
                             Гора Эльбрус
                         </h3>
-                        <button class="card__like" aria-hidden="true"></button>
+                        <button type="button" class="button_type_like" aria-label="Нравится"></button>
                     </li>
                     <li class="card">
                         <img src="./images/grid-photo-3.jpg" class="card__image" alt="фото карточки">
                         <h3 class="card__title">
                             Домбай
                         </h3>
-                        <button class="card__like" aria-hidden="true"></button>
+                        <button type="button" class="button_type_like" aria-label="Нравится"></button>
                     </li>
                     <li class="card">
                         <img src="./images/grid-photo-2.jpg" class="card__image"  alt="фото карточки">
                         <h3 class="card__title">
                             Гора Эльбрус
                         </h3>
-                        <button class="card__like" aria-hidden="true"></button>
+                        <button type="button" class="button_type_like" aria-label="Нравится"></button>
                     </li>
                     <li class="card">
                         <img src="./images/grid-photo-3.jpg" class="card__image" alt="фото карточки">
                         <h3 class="card__title">
                             Домбай
                         </h3>
-                        <button class="card__like" aria-hidden="true"></button>
+                        <button type="button" class="button_type_like" aria-label="Нравится"></button>
                     </li>
                     <li class="card">
                         <img src="./images/grid-photo-1.jpg" class="card__image" alt="фото карточки">
                         <h3 class="card__title">
                             Карачаево-Черкесия
                         </h3>
-                        <button class="card__like" aria-hidden="true"></button>
+                        <button type="button" class="button_type_like" aria-label="Нравится"></button>
                     </li>
                 </ul>
             </section>
@@ -93,22 +93,22 @@
             </p>
         </footer>
 
-        <section class="popup">
+        <div class="popup">
       
             <div class="popup__container">
-                <button class="popup__close-button page__button" type="button"></button>
+                <button type="button" class="button_type_close-popup button" type="button"></button>
 
                 <h2 class="popup__title">
                     Редактировать профиль
                 </h2>
                 <form class="popup__edit-form" name="editform">
-                    <input type="text" name="name" class="popup__input popup__input_name" value="Имя">
-                    <input type="text" name="occupation" class="popup__input popup__input_occupation" value="О себе">
-                    <input type="submit" class="popup__submit page__button" value="Сохранить">
+                    <input type="text" name="name" class="popup__input popup__input_type_name" value="Имя">
+                    <input type="text" name="occupation" class="popup__input popup__input_type_occupation" value="О себе">
+                    <button type="submit" class="popup__submit button">Сохранить</button>
                 </form>
             </div>
 
-      </section>
+        </div>
 
     </div>
 
