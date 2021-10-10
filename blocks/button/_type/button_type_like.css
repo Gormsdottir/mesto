@@ -5,9 +5,7 @@
     height: 19px;
     object-fit: contain;
     border: none;
-    background-image: url(../../../images/likeButton.svg);
-    background-repeat: no-repeat;
-    background-position: center;
+    background: url(../../../images/likeButton.svg) center no-repeat;
     background-color: transparent;
 }
 
@@ -15,4 +13,10 @@
     opacity: 0.6;
     cursor: pointer;
     transition: opacity 0.3s ease-in-out;
+}
+
+.button_type_like_active {
+    opacity: 1;
+    background: url(../../../images/likeButtonActive.svg) center no-repeat;
+
 }
