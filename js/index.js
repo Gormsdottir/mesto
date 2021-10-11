@@ -1,4 +1,6 @@
 const popup = document.querySelector('.popup');
+const popupEdit = document.querySelector('.popup_edit-info');
+const popupAdd = document.querySelector('.popup_add-card');
 const btnEditProfile = document.querySelector('.button_type_edit-profile');
 const btnClosepopup = document.querySelector('.button_type_close-popup');
 
@@ -9,7 +11,6 @@ const profileOccupation = document.querySelector('.profile__occupation');
 
 const popupName = document.querySelector('.popup__input_type_name');
 const popupOccupation = document.querySelector('.popup__input_type_occupation');
-
 
 const initialCards = [
         {
@@ -62,7 +63,7 @@ initialCards.forEach(function (el) {
 
 
 function openPopup() {
-    popup.classList.add('popup_opened');
+  popup.classList.add('popup_opened');
 }
 
 function setPopupInputValue() {
@@ -71,7 +72,7 @@ function setPopupInputValue() {
 }
 
 function closePopup() {
-    popup.classList.remove('popup_opened');
+  popup.classList.remove('popup_opened');
 }
 
 function setPopupTextValue() {
@@ -84,7 +85,6 @@ function popupSubmit (evt) {
     setPopupTextValue();
     closePopup();
 }
-
 
 btnEditProfile.addEventListener('click', openPopup);
 btnEditProfile.addEventListener('click', setPopupInputValue);
