@@ -134,6 +134,7 @@ function closePopupAdd() {
 function addCardSubmit (evt) {
   evt.preventDefault();
   addCard();
+  document.querySelector('.popup__add-form').reset();
   closePopupAdd();
 }
 
