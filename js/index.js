@@ -147,4 +147,3 @@ popupEdit.addEventListener('submit', popupSubmit);
 btnAddCard.addEventListener('click', openPopupAdd);
 btnClosePopupAdd.addEventListener('click', closePopupAdd);
 popupAdd.addEventListener('submit', addCardSubmit);
-popupAdd.addEventListener('submit', reset);
