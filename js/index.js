@@ -119,10 +119,9 @@ function setPopupEditTextValue() {
 
 function popupSubmit (evt) {
   evt.preventDefault();
-  evt.currentTarget.reset();
+  setPopupEditTextValue();
   closePopupEdit();
 }
-
 
 function openPopupAdd() {
   popupAdd.classList.add('popup_opened');
@@ -147,3 +146,4 @@ popupEdit.addEventListener('submit', popupSubmit);
 btnAddCard.addEventListener('click', openPopupAdd);
 btnClosePopupAdd.addEventListener('click', closePopupAdd);
 popupAdd.addEventListener('submit', addCardSubmit);
+popupAdd.addEventListener('submit', reset);
