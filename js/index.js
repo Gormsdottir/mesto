@@ -88,8 +88,9 @@ initialCards.forEach((item) => {
   cardsContainer.append(newCard);
 });
 
-function addCard() {
-
+function addCard(evt) {
+  evt.preventDefault();
+  
   const info = {
     name: document.querySelector('.popup__input_type_title').value,
     link: document.querySelector('.popup__input_type_image').value,
@@ -97,6 +98,7 @@ function addCard() {
   const newAddCard = createCard(info);
   
   cardsContainer.prepend(newAddCard);
+  evt.currentTarget.reset();
 }
 
 function openPopupEdit() {
