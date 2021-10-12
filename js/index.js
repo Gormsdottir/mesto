@@ -119,7 +119,6 @@ function setPopupEditTextValue() {
 
 function popupSubmit (evt) {
   evt.preventDefault();
-  setPopupEditTextValue();
   evt.currentTarget.reset();
   closePopupEdit();
 }
