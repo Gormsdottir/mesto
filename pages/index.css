@@ -8,7 +8,7 @@
 
 @import url(../blocks/button/_type/button_type_add-card.css);
 
-@import url(../blocks/button/_type/button_type_close-popup.css);
+@import url(../blocks/button/_type/button_type_close.css);
 
 @import url(../blocks/button/_type/button_type_edit-profile.css);
 
@@ -61,3 +61,11 @@
 @import url(../blocks/popup/__input/popup__input.css);
 
 @import url(../blocks/popup/__submit/popup__submit.css);
+
+@import url(../blocks/popup/__place-photo/popup__place-photo.css);
+
+@import url(../blocks/popup/__description/popup__description.css);
+
+@import url(../blocks/popup/_type/popup_type_image.css);
+
+@import url(../blocks/popup/__container/_type/popup__container_type_image.css);
