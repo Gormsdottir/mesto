@@ -61,8 +61,8 @@
                     Редактировать профиль
                 </h2>
                 <form class="popup__edit-form" name="editform">
-                    <input type="text" name="name" class="popup__input popup__input_type_name" placeholder="Имя" value="">
-                    <input type="text" name="occupation" class="popup__input popup__input_type_occupation" placeholder="О себе" value="">
+                    <input type="text" required name="name" class="popup__input popup__input_type_name" placeholder="Имя" value="">
+                    <input type="text" required name="occupation" class="popup__input popup__input_type_occupation" placeholder="О себе" value="">
                     <button type="submit" class="popup__submit popup__submit_edit button">Сохранить</button>
                 </form>
             </div>
@@ -78,8 +78,8 @@
                     Новое место
                 </h2>
                 <form class="popup__add-form" name="addform">
-                    <input type="text" name="title" class="popup__input popup__input_type_title" placeholder="Название" value="">
-                    <input type="text" name="image" class="popup__input popup__input_type_image" placeholder="Ссылка на картинку" value="">
+                    <input type="text" required name="title" class="popup__input popup__input_type_title" placeholder="Название" value="">
+                    <input type="url" required name="image" class="popup__input popup__input_type_image" placeholder="Ссылка на картинку" value="">
                     <button type="submit" class="popup__submit popup__submit_add button">Создать</button>
                 </form>
             </div>
@@ -106,6 +106,7 @@
           </li>
     </template>
 
+    <script src="./js/cards.js"></script>
     <script src="./js/index.js"></script>
 </body>
 
