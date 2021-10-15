@@ -1,5 +1,3 @@
-const popup = document.querySelector('.popup');
-
 const popupEdit = document.querySelector('.popup_type_edit-info');
 const btnEditProfile = document.querySelector('.button_type_edit-profile');
 const profileName = document.querySelector('.profile__name');
@@ -13,6 +11,9 @@ const popupAdd = document.querySelector('.popup_type_add-card');
 const btnAddCard = document.querySelector('.button_type_add-card');
 const addCardTitle = document.querySelector('.card__title');
 const addCardImage = document.querySelector('.card__image');
+const popupAddTitle = document.querySelector('.popup__input_type_title');
+const popupAddImage = document.querySelector('.popup__input_type_image');
+
 const btnClosePopupAdd = document.querySelector('.button_type_close-add-popup');
 const btnCreateCard = document.querySelector('.popup__submit_add');
 
@@ -31,22 +32,25 @@ function createCard(data) {
 
   cardName.textContent = data.name;
   cardImage.src = data.link;
+  cardImage.alt = 'фото: ' + data.name;
 
   cardElement.querySelector('.button_type_like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('button_type_like_active');
   });
-    
+
   deleteButton.addEventListener('click', function () {
       const cardItem = deleteButton.closest('.card');
       cardItem.remove();
   });
 
-  cardImage.addEventListener('click', function () {
+  function openFullImage() {
     popupImage.classList.add('popup_opened');
     popupDescription.textContent = data.name;
     popupDescription.alt = data.name;
     popupPlacePhoto.src = data.link;
-  });
+  }
+
+  cardImage.addEventListener('click', openFullImage);
 
   btnCloseImage.addEventListener('click', function () {
     popupImage.classList.remove('popup_opened');
@@ -64,20 +68,20 @@ initialCards.forEach((item) => {
 function addCard() {
 
   const info = {
-    name: document.querySelector('.popup__input_type_title').value,
-    link: document.querySelector('.popup__input_type_image').value,
+    name: popupAddTitle.value,
+    link: popupAddImage.value,
   };
   const newAddCard = createCard(info);
-  
+
   cardsContainer.prepend(newAddCard);
 }
 
-function openPopupEdit() {
-  popupEdit.classList.add('popup_opened');
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
 }
 
-function closePopupEdit() {
-  popupEdit.classList.remove('popup_opened');
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
 }
 
 function setPopupEditInputValue() {
@@ -90,33 +94,27 @@ function setPopupEditTextValue() {
   profileOccupation.textContent = popupEditOccupation.value;
 }
 
-function popupSubmit (evt) {
+function saveEditPopupInfo (evt) {
   evt.preventDefault();
   setPopupEditTextValue();
-  closePopupEdit();
+  closePopup(popupEdit);
 }
 
-function openPopupAdd() {
-  popupAdd.classList.add('popup_opened');
-}
-
-function closePopupAdd() {
-  popupAdd.classList.remove('popup_opened');
-}
-
-function addCardSubmit (evt) {
+function addNewCardSubmit (evt) {
   evt.preventDefault();
   addCard();
   document.querySelector('.popup__add-form').reset();
-  closePopupAdd();
+  closePopup(popupAdd);
 }
 
-btnEditProfile.addEventListener('click', openPopupEdit);
-btnClosePopupEdit.addEventListener('click', closePopupEdit);
-btnSubmit.addEventListener('click', closePopupEdit);
-btnEditProfile.addEventListener('click', setPopupEditInputValue);
-popupEdit.addEventListener('submit', popupSubmit);
+btnEditProfile.addEventListener('click', openPopup.bind(null, popupEdit));
+btnClosePopupEdit.addEventListener('click', closePopup.bind(null, popupEdit));
+btnSubmit.addEventListener('click', closePopup.bind(null, popupEdit));
 
-btnAddCard.addEventListener('click', openPopupAdd);
-btnClosePopupAdd.addEventListener('click', closePopupAdd);
-popupAdd.addEventListener('submit', addCardSubmit);
+btnEditProfile.addEventListener('click', setPopupEditInputValue);
+popupEdit.addEventListener('submit', saveEditPopupInfo);
+
+btnAddCard.addEventListener('click', openPopup.bind(null, popupAdd));
+btnClosePopupAdd.addEventListener('click', closePopup.bind(null, popupAdd));
+
+popupAdd.addEventListener('submit', addNewCardSubmit);
