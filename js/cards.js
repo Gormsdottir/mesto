@@ -9,7 +9,7 @@ const initialCards = [
     },
     {
       name: 'Эдинбург',
-      link: 'https://images.unsplash.com/photo-1605641251481-e998506236a1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80'
+      link: 'https://www.aeroport-carcassonne.com/media/cache/front_fancy/medias_front/pages/030827castle-2776404.webp'
     },
     {
       name: 'Квебек',
