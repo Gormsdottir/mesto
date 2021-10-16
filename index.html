@@ -53,16 +53,33 @@
         </footer>
 
         <div class="popup popup_type_edit-info">
-      
+
             <div class="popup__container">
                 <button type="button" class="button_type_close-edit-popup button_type_close button"></button>
 
                 <h2 class="popup__title">
                     Редактировать профиль
                 </h2>
-                <form class="popup__edit-form" name="editform">
-                    <input type="text" required name="name" class="popup__input popup__input_type_name" placeholder="Имя" value="" required minlength="2" maxlength="40">
-                    <input type="text" required name="occupation" class="popup__input popup__input_type_occupation" placeholder="О себе" value="" required minlength="2" maxlength="200">
+                <form novalidate class="form popup__edit-form" name="editform">
+                    <div class="popup__area">
+                        <input 
+                            type="text"
+                            required
+                            name="name"
+                            class="popup__input popup__input_type_name"
+                            placeholder="Имя"
+                            value=""
+                            required
+                            minlength="2"
+                            maxlength="40"
+                        />
+                        <div class="popup__ popup__label-error">Вы пропустили это поле.</div>
+                    </div>
+                    <div class="popup__area">
+                        <input type="text" required name="occupation" class="popup__input popup__input_type_occupation"
+                            placeholder="О себе" value="" required minlength="2" maxlength="200">
+                        <label for="occupation" class="popup__label popup__label-error">Вы пропустили это поле.</label>
+                    </div>
                     <button type="submit" class="popup__submit popup__submit_edit button">Сохранить</button>
                 </form>
             </div>
@@ -70,16 +87,24 @@
         </div>
 
         <div class="popup popup_type_add-card">
-      
+
             <div class="popup__container">
                 <button type="button" class="button_type_close-add-popup button_type_close button"></button>
 
                 <h2 class="popup__title">
                     Новое место
                 </h2>
-                <form class="popup__add-form" name="addform">
-                    <input type="text" required name="title" class="popup__input popup__input_type_title" placeholder="Название" value="" required minlength="2" maxlength="30">
-                    <input type="url" required name="image" class="popup__input popup__input_type_image" placeholder="Ссылка на картинку" value="" required>
+                <form novalidate class="form popup__add-form" name="addform">
+                    <div class="popup__area">
+                        <input type="text" required name="title" class="popup__input popup__input_type_title"
+                            placeholder="Название" value="" required minlength="2" maxlength="30">
+                            <label for="title" class="popup__label popup__label-error">Вы пропустили это поле.</label>
+                        </div>
+                        <div class="popup__area">
+                    <input type="url" required name="image" class="popup__input popup__input_type_image"
+                        placeholder="Ссылка на картинку" value="" required>
+                        <label for="image" class="popup__label popup__label-error">Введите адрес сайта.</label>
+                    </div>
                     <button type="submit" class="popup__submit popup__submit_add button">Создать</button>
                 </form>
             </div>
@@ -89,7 +114,7 @@
         <div class="popup popup_type_image">
             <div class="popup__container popup__container_type_image">
                 <button type="button" class="button_type_close-image button_type_close button"></button>
-               
+
                 <img class="popup__place-photo" src="#" alt="#">
                 <h2 class="popup__description"></h2>
             </div>
@@ -98,16 +123,17 @@
     </div>
 
     <template id="cards-template">
-          <li class="card">
+        <li class="card">
             <img class="card__image">
             <h3 class="card__title"></h3>
             <button class="button button_type_like"></button>
             <button class="button button_type_delete"></button>
-          </li>
+        </li>
     </template>
 
     <script src="./js/cards.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/validation.js"></script>
 </body>
 
 </html>

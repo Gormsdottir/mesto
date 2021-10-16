@@ -8,4 +8,10 @@
     object-position: center;
     display: block;
     border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    transition: opacity .3s ease-in-out;
+}
+
+.card__image:hover {
+    opacity: .8;
 }

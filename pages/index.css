@@ -60,7 +60,11 @@
 
 @import url(../blocks/popup/__input/popup__input.css);
 
+@import url(../blocks/popup/__input/popup__input-error.css);
+
 @import url(../blocks/popup/__submit/popup__submit.css);
+
+@import url(../blocks/popup/__area/popup__area.css);
 
 @import url(../blocks/popup/__place-photo/popup__place-photo.css);
 
