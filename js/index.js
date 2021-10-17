@@ -1,3 +1,4 @@
+const page = document.querySelector('.page');
 const popupEdit = document.querySelector('.popup_type_edit-info');
 const btnEditProfile = document.querySelector('.button_type_edit-profile');
 const profileName = document.querySelector('.profile__name');
@@ -109,6 +110,22 @@ function addNewCardSubmit (evt) {
   closePopup(popupAdd);
 }
 
+function closePopupKey (evt) {
+  if (evt.key === 'Escape') {
+    closePopup(popupAdd) || 
+    closePopup(popupEdit) || 
+    closePopup(popupImage);
+  }
+}
+
+function handlePopupClick(evt) {
+  if (evt.target.classList.contains("popup")) {
+    closePopup(popupAdd) || 
+    closePopup(popupEdit) || 
+    closePopup(popupImage);
+  }
+}
+
 btnEditProfile.addEventListener('click', openPopup.bind(null, popupEdit));
 btnClosePopupEdit.addEventListener('click', closePopup.bind(null, popupEdit));
 btnSubmit.addEventListener('click', closePopup.bind(null, popupEdit));
@@ -121,10 +138,5 @@ btnClosePopupAdd.addEventListener('click', closePopup.bind(null, popupAdd));
 
 popupAdd.addEventListener('submit', addNewCardSubmit);
 
-document.addEventListener('keydown', function(evt) {
-  if (evt.key === 'Escape') {
-    closePopup(popupAdd) || 
-    closePopup(popupEdit) || 
-    closePopup(popupImage);
-  }
-})
+document.addEventListener('keydown', closePopupKey);
+page.addEventListener('click', handlePopupClick);
