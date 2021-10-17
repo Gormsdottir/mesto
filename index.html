@@ -62,13 +62,14 @@
                 </h2>
                 <form novalidate class="form popup__edit-form" name="editform">
                     <div class="popup__area">
-                        <input id="name" autocomplete="off" title="Вы пропустили это поле." class="popup__input popup__input_type_name" type="text"
-                            required name="name" placeholder="Имя" value="" required minlength="2" maxlength="40" />
+                        <input id="name" autocomplete="off" title="Вы пропустили это поле."
+                            class="popup__input popup__input_type_name" type="text" required name="name"
+                            placeholder="Имя" value="" minlength="2" maxlength="40" />
                         <span id="name-error" class="error"></span>
                     </div>
                     <div class="popup__area">
                         <input id="occupation" type="text" autocomplete="off" required name="occupation"
-                            class="popup__input popup__input_type_occupation" placeholder="О себе" value="" required
+                            class="popup__input popup__input_type_occupation" placeholder="О себе" value=""
                             minlength="2" maxlength="200" />
                         <span id="occupation-error" class="error"></span>
                     </div>
@@ -89,14 +90,13 @@
                 <form novalidate class="form popup__add-form" name="addform">
                     <div class="popup__area">
                         <input id="title" autocomplete="off" type="text" required name="title"
-                            class="popup__input popup__input_type_title" placeholder="Название" value="" required
-                            minlength="2" maxlength="30" />
+                            class="popup__input popup__input_type_title" placeholder="Название" value="" minlength="2"
+                            maxlength="30" />
                         <span id="title-error" class="error"></span>
                     </div>
                     <div class="popup__area">
                         <input id="image" type="url" autocomplete="off" required name="image"
-                            class="popup__input popup__input_type_image" placeholder="Ссылка на картинку" value=""
-                            required />
+                            class="popup__input popup__input_type_image" placeholder="Ссылка на картинку" value="" />
                         <span id="image-error" class="error"></span>
                     </div>
                     <button type="submit" class="button popup__submit popup__submit_add">Создать</button>
