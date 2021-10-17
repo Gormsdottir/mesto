@@ -21,6 +21,8 @@ const btnCloseImage = document.querySelector('.button_type_close-image');
 const btnClosePopupAdd = document.querySelector('.button_type_close-add-popup');
 const btnCreateCard = document.querySelector('.popup__submit_add');
 
+const addForm = document.querySelector('.popup__add-form');
+
 const cardsContainer = document.querySelector('.cards__grid');
 
 
@@ -103,7 +105,7 @@ function saveEditPopupInfo (evt) {
 function addNewCardSubmit (evt) {
   evt.preventDefault();
   addCard();
-  document.querySelector('.popup__add-form').reset();
+  addForm.reset();
   closePopup(popupAdd);
 }
 
@@ -118,3 +120,11 @@ btnAddCard.addEventListener('click', openPopup.bind(null, popupAdd));
 btnClosePopupAdd.addEventListener('click', closePopup.bind(null, popupAdd));
 
 popupAdd.addEventListener('submit', addNewCardSubmit);
+
+document.addEventListener('keydown', function(evt) {
+  if (evt.key === 'Escape') {
+    closePopup(popupAdd) || 
+    closePopup(popupEdit) || 
+    closePopup(popupImage);
+  }
+})

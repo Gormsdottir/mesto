@@ -1,7 +1,9 @@
 .button {
     margin: 0;
     padding: 0;
+    border: none;
     background-color: black;
+    color: white;
     transition: opacity 0.3s ease-in-out;
 }
 
