@@ -7,4 +7,5 @@
 
 .button_type_invalid:hover {
     opacity: 0.2;
+    cursor: default;
 }
