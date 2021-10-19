@@ -11,15 +11,10 @@ const hideError = (formElement, inputElement, inputErrorClass) => {
     errorElement.textContent = '';
 }
 
-
 function hasInvalidInput(inputList) {
     return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
+        return !inputElement.validity.valid;
   });
-}
-
-function allInputsEmpty(inputList) {
-    return !inputList.some((inputElement) => inputElement.value.length > 0);
 }
 
 const toggleButtonState = (button, isNotValidateInputs, inactiveButtonClass) => {
@@ -32,7 +27,6 @@ const toggleButtonState = (button, isNotValidateInputs, inactiveButtonClass) => 
     }
 }
 
-
 const checkInputValidity = (errorElement, inputElement, config) => {
 
     if (!inputElement.validity.valid) {
@@ -42,14 +36,13 @@ const checkInputValidity = (errorElement, inputElement, config) => {
     }
 }
 
-
 const setEventListeners = (formElement, {inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass }) => {
     const inputList = Array.from(formElement.querySelectorAll(inputSelector));
     const submitButton = formElement.querySelector(submitButtonSelector);
 
     inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', function () {
-            const isNotValidateInputs = hasInvalidInput(inputList) || allInputsEmpty(inputList);
+            const isNotValidateInputs = hasInvalidInput(inputList);
 
             checkInputValidity(formElement, inputElement, inputErrorClass);
             toggleButtonState(submitButton, isNotValidateInputs, inactiveButtonClass);

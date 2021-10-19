@@ -55,7 +55,8 @@ function createCard(data) {
 
   btnLike.addEventListener('click', likeCard);
   deleteButton.addEventListener('click', deleteCard);  
-  cardImage.addEventListener('click', openFullImage);  
+  cardImage.addEventListener('click', openFullImage); 
+   
   
   return cardElement;
 };
@@ -85,24 +86,18 @@ function closePopupKeyEsc (evt) {
 function handleClosePopupClick(evt) {
   const target = evt.target;
   if (target.classList.contains('popup')){
-    closePopup();
+    closePopup(target);
   } 
 }
 
 function openPopup (elem) {
   elem.classList.add('popup_opened');
-  page.addEventListener('click', handleClosePopupClick);
   document.addEventListener('keydown', closePopupKeyEsc);
 }
 
-function closePopup () {
-  const activePopup = document.querySelector('.popup_opened');
-  if(activePopup) {
-  activePopup.classList.remove('popup_opened');
-  page.removeEventListener('click', handleClosePopupClick);
+function closePopup (elem) {
+  elem.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupKeyEsc);
-  popupFormAddCard.reset();
-  }
 }
 
 function setPopupEditInputValue() {
@@ -132,9 +127,9 @@ btnEditProfile.addEventListener('click', () => {
   setPopupEditInputValue();
   openPopup(popupEdit);
 });
-
-btnClosePopupEdit.addEventListener('click', closePopup);
-btnEditSubmit.addEventListener('click', closePopup);
+btnClosePopupEdit.addEventListener('click',  () => {
+  closePopup(popupEdit);
+});
 
 popupEdit.addEventListener('submit', saveEditPopupInfo);
 
@@ -143,6 +138,14 @@ btnAddCard.addEventListener('click', () => {
   openPopup(popupAddCard);
 });
 popupAddCard.addEventListener('submit', addNewCardSubmit);
-btnClosePopupAdd.addEventListener('click', closePopup);
+btnClosePopupAdd.addEventListener('click', () => {
+  closePopup(popupAddCard);
+});
 
-btnCloseImage.addEventListener('click', closePopup);
+btnCloseImage.addEventListener('click', () => {
+  closePopup(popupImage);
+});
+
+popupEdit.addEventListener('click', handleClosePopupClick);
+popupAddCard.addEventListener('click', handleClosePopupClick);
+popupImage.addEventListener('click', handleClosePopupClick);
