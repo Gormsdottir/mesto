@@ -8,7 +8,6 @@ const profileOccupation = document.querySelector('.profile__occupation');
 const popupEditName = document.querySelector('.popup__input_type_name');
 const popupEditOccupation = document.querySelector('.popup__input_type_occupation');
 const btnClosePopupEdit = document.querySelector('.button_type_close-edit-popup');
- const btnEditSubmit = document.querySelector('.popup__submit_edit');
 
 const popupAddCard = document.querySelector('.popup_type_add-card');
 const btnAddCard = document.querySelector('.button_type_add-card');
@@ -19,11 +18,13 @@ const popupImage = document.querySelector('.popup_type_image');
 const btnCloseImage = document.querySelector('.button_type_close-image');
 
 const btnClosePopupAdd = document.querySelector('.button_type_close-add-popup');
-const btnCreateCard = document.querySelector('.popup__submit_add');
 
 const popupFormAddCard = document.querySelector('.popup__add-form');
 
 const cardsContainer = document.querySelector('.cards__grid');
+
+const popupEditFormVal = new FormValidator(validationConfig, popupEdit);
+const popupAddCardVal = new FormValidator(validationConfig, popupFormAddCard);
 
 
 const validationConfig = {
@@ -52,13 +53,6 @@ function addCard() {
 
   cardsContainer.prepend(newAddCard);
 }
-
-
-const popupEditFormVal = new FormValidator(validationConfig, popupEdit);
-popupEditFormVal.enableValidation();
-
-const popupAddCardVal = new FormValidator(validationConfig, popupFormAddCard);
-popupAddCardVal.enableValidation();
 
 function closePopupKeyEsc (evt) {
   if (evt.key === 'Escape') {
@@ -105,6 +99,10 @@ function addNewCardSubmit (evt) {
   popupFormAddCard.reset();
   closePopup(popupAddCard);
 }
+
+popupEditFormVal.enableValidation();
+
+popupAddCardVal.enableValidation();
 
 btnEditProfile.addEventListener('click', () => {
   popupEditFormVal.enableSubmitButton();
