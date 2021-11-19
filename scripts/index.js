@@ -1,4 +1,6 @@
-const page = document.querySelector('.page');
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+
 const popupEdit = document.querySelector('.popup_type_edit-info');
 const btnEditProfile = document.querySelector('.button_type_edit-profile');
 const profileName = document.querySelector('.profile__name');
@@ -6,14 +8,13 @@ const profileOccupation = document.querySelector('.profile__occupation');
 const popupEditName = document.querySelector('.popup__input_type_name');
 const popupEditOccupation = document.querySelector('.popup__input_type_occupation');
 const btnClosePopupEdit = document.querySelector('.button_type_close-edit-popup');
-const btnEditSubmit = document.querySelector('.popup__submit_edit');
+ const btnEditSubmit = document.querySelector('.popup__submit_edit');
 
 const popupAddCard = document.querySelector('.popup_type_add-card');
 const btnAddCard = document.querySelector('.button_type_add-card');
 const popupAddTitle = document.querySelector('.popup__input_type_title');
 const popupAddImage = document.querySelector('.popup__input_type_image');
-const popupDescription = document.querySelector('.popup__description');
-const popupPlacePhoto = document.querySelector('.popup__place-photo');
+
 const popupImage = document.querySelector('.popup_type_image');
 const btnCloseImage = document.querySelector('.button_type_close-image');
 
@@ -25,46 +26,20 @@ const popupFormAddCard = document.querySelector('.popup__add-form');
 const cardsContainer = document.querySelector('.cards__grid');
 
 
-function likeCard (evt) {
-  evt.target.classList.toggle('button_type_like_active');
+const validationConfig = {
+  formSelector: '.form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'button_type_invalid',
+  inputErrorClass: 'popup__input-invalid',
 }
 
-function createCard(data) {
-  const cardsTemplate = document.querySelector('#cards-template').content;
-  const cardElement = cardsTemplate.querySelector('.card').cloneNode(true);
-  const cardName = cardElement.querySelector('.card__title');
-  const cardImage = cardElement.querySelector('.card__image');
-  const deleteButton = cardElement.querySelector('.button_type_delete');
-  const btnLike = cardElement.querySelector('.button_type_like');
-
-  cardName.textContent = data.name;
-  cardImage.src = data.link;
-  cardImage.alt = `фото: ${data.name}`;
-
-  function openFullImage() {
-    openPopup(popupImage);
-    popupDescription.textContent = data.name;
-    popupPlacePhoto.alt = data.name;
-    popupPlacePhoto.src = data.link;
-  }
-  
-  function deleteCard() {
-    const cardItem = deleteButton.closest('.card');
-    cardItem.remove();
-  }
-
-  btnLike.addEventListener('click', likeCard);
-  deleteButton.addEventListener('click', deleteCard);  
-  cardImage.addEventListener('click', openFullImage); 
-   
-  
-  return cardElement;
-};
-
 initialCards.forEach((item) => {
-  const newCard = createCard(item);
+  const card = new Card(item.name, item.link, '#cards-template');
 
-  cardsContainer.append(newCard);
+  const cardElement = card.generateCard();
+
+  document.querySelector('.cards__grid').append(cardElement);
 });
 
 function addCard() {
@@ -72,10 +47,18 @@ function addCard() {
     name: popupAddTitle.value,
     link: popupAddImage.value,
   };
-  const newAddCard = createCard(info);
+  const card = new Card(info.name, info.link, '#cards-template');
+  const newAddCard = card.generateCard(info);
 
   cardsContainer.prepend(newAddCard);
 }
+
+
+const popupEditFormVal = new FormValidator(validationConfig, popupEdit);
+popupEditFormVal.enableValidation();
+
+const popupAddCardVal = new FormValidator(validationConfig, popupFormAddCard);
+popupAddCardVal.enableValidation();
 
 function closePopupKeyEsc (evt) {
   if (evt.key === 'Escape') {
@@ -124,6 +107,7 @@ function addNewCardSubmit (evt) {
 }
 
 btnEditProfile.addEventListener('click', () => {
+  popupEditFormVal.enableSubmitButton();
   setPopupEditInputValue();
   openPopup(popupEdit);
 });
@@ -134,7 +118,7 @@ btnClosePopupEdit.addEventListener('click',  () => {
 popupEdit.addEventListener('submit', saveEditPopupInfo);
 
 btnAddCard.addEventListener('click', () => {
-  toggleButtonState(btnCreateCard, true, validationConfig.inactiveButtonClass);
+  popupAddCardVal.disableSubmitButton();
   openPopup(popupAddCard);
 });
 popupAddCard.addEventListener('submit', addNewCardSubmit);
