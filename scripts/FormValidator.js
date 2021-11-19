@@ -44,13 +44,13 @@ export default class FormValidator {
     // кнопка неактивна
     disableSubmitButton() {
         this._submitButton.classList.add(this._inactiveButtonClass);
-        this._submitButton.disbaled = true;
+        this._submitButton.setAttribute('disabled', true);
     }
 
     // кнопка активна
     enableSubmitButton() {
         this._submitButton.classList.remove(this._inactiveButtonClass);
-        this._submitButton.disbaled = false;
+        this._submitButton.removeAttribute('disabled', true);
     }
 
     // состояние кнопки
@@ -58,7 +58,7 @@ export default class FormValidator {
         if (this._hasInvalidInput(this._inputList)) {
             this.disableSubmitButton();
         } else {
-            this.enableSubmitButton();
+            this.enableSubmitButton()
         }
     }
     

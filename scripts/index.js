@@ -103,25 +103,35 @@ function addNewCardSubmit (evt) {
   closePopup(popupAddCard);
 }
 
+// открытие попапа с данными
 btnEditProfile.addEventListener('click', () => {
   popupEditFormVal.enableSubmitButton();
   setPopupEditInputValue();
   openPopup(popupEdit);
 });
+
+// закрытие попапа с данными
 btnClosePopupEdit.addEventListener('click',  () => {
   closePopup(popupEdit);
 });
 
+// сохранение данных
 popupEdit.addEventListener('submit', saveEditPopupInfo);
 
+// открытие попапа создания карточки
 btnAddCard.addEventListener('click', () => {
   popupAddCardVal.disableSubmitButton();
   openPopup(popupAddCard);
 });
-popupAddCard.addEventListener('submit', addNewCardSubmit);
+
+// закрытие попапа создания карточки
 btnClosePopupAdd.addEventListener('click', () => {
   closePopup(popupAddCard);
 });
+
+// сохранение карточки
+popupAddCard.addEventListener('submit', addNewCardSubmit);
+
 
 btnCloseImage.addEventListener('click', () => {
   closePopup(popupImage);
