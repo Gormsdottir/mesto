@@ -23,9 +23,6 @@ const popupFormAddCard = document.querySelector('.popup__add-form');
 
 const cardsContainer = document.querySelector('.cards__grid');
 
-const popupEditFormVal = new FormValidator(validationConfig, popupEdit);
-const popupAddCardVal = new FormValidator(validationConfig, popupFormAddCard);
-
 
 const validationConfig = {
   formSelector: '.form',
@@ -53,6 +50,12 @@ function addCard() {
 
   cardsContainer.prepend(newAddCard);
 }
+
+const popupEditFormVal = new FormValidator(validationConfig, popupEdit);
+popupEditFormVal.enableValidation();
+
+const popupAddCardVal = new FormValidator(validationConfig, popupFormAddCard);
+popupAddCardVal.enableValidation();
 
 function closePopupKeyEsc (evt) {
   if (evt.key === 'Escape') {
@@ -99,10 +102,6 @@ function addNewCardSubmit (evt) {
   popupFormAddCard.reset();
   closePopup(popupAddCard);
 }
-
-popupEditFormVal.enableValidation();
-
-popupAddCardVal.enableValidation();
 
 btnEditProfile.addEventListener('click', () => {
   popupEditFormVal.enableSubmitButton();
