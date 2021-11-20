@@ -1,9 +1,10 @@
 export default class Card {
-    constructor(name, link, cardSelector) {
+    constructor(name, link, cardSelector, handleImageOpen) {
         this._name = name;
         this._link = link;
         this._cardSelector = cardSelector;
         this._popup = document.querySelector('.popup_type_image');
+        this._handleImageOpen = handleImageOpen;
     }
 
     _getTemplate() {
@@ -20,7 +21,9 @@ export default class Card {
         this._element
         .querySelector('.card__image')
         .addEventListener('click', () => {
-            this._handleImageOpen();
+            this._handleImageOpen({
+                name: this._name,
+                link: this._link});
         }); 
 
         this._element
