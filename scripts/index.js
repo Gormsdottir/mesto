@@ -15,6 +15,8 @@ const popupAddTitle = document.querySelector('.popup__input_type_title');
 const popupAddImage = document.querySelector('.popup__input_type_image');
 
 const popupImage = document.querySelector('.popup_type_image');
+const popupImageDescription = popupImage.querySelector('.popup__description');
+const popupImagePhoto = popupImage.querySelector('.popup__place-photo');
 const btnCloseImage = document.querySelector('.button_type_close-image');
 
 const btnClosePopupAdd = document.querySelector('.button_type_close-add-popup');
@@ -32,12 +34,13 @@ const validationConfig = {
   inputErrorClass: 'popup__input-invalid',
 }
 
-initialCards.forEach((item) => {
+function createCard(item) {
   const card = new Card(item.name, item.link, '#cards-template', handleImageOpen);
+  return card.generateCard();
+}
 
-  const cardElement = card.generateCard();
-
-  document.querySelector('.cards__grid').append(cardElement);
+initialCards.forEach((item) => {
+  cardsContainer.append(createCard(item));
 });
 
 function addCard() {
@@ -45,17 +48,14 @@ function addCard() {
     name: popupAddTitle.value,
     link: popupAddImage.value,
   };
-  const card = new Card(info.name, info.link, '#cards-template', handleImageOpen);
-  const newAddCard = card.generateCard(info);
-
-  cardsContainer.prepend(newAddCard);
+  cardsContainer.prepend(createCard(info));
 }
 
 function handleImageOpen(data) {
   
-  popupImage.querySelector('.popup__description').textContent = data.name;
-  popupImage.querySelector('.popup__place-photo').alt = data.name;
-  popupImage.querySelector('.popup__place-photo').src = data.link;
+  popupImageDescription.textContent = data.name;
+  popupImagePhoto.alt = data.name;
+  popupImagePhoto.src = data.link;
 
   openPopup(popupImage)
 } 

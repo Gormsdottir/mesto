@@ -3,7 +3,6 @@ export default class Card {
         this._name = name;
         this._link = link;
         this._cardSelector = cardSelector;
-        this._popup = document.querySelector('.popup_type_image');
         this._handleImageOpen = handleImageOpen;
     }
 
@@ -38,14 +37,6 @@ export default class Card {
             this._handleCardDelete();
         });
     }
-
-    _handleImageOpen() {
-        this._popup.classList.add('popup_opened');
-
-        this._popup.querySelector('.popup__description').textContent = this._name;
-        this._popup.querySelector('.popup__place-photo').alt = this._name;
-        this._popup.querySelector('.popup__place-photo').src = this._link;
-    } 
 
     _handleCardLike() {
         const btnLike = this._element.querySelector('.button_type_like');
