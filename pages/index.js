@@ -63,6 +63,8 @@ userInfo.setUserInfo({
 
 userInfo.updateUserInfo();
 
+// действия с попапами изменения информации и добавления карточек 
+
 const popupEditForm = new PopupWithForm(popupEdit, submitEditForm);
 popupEditForm.setEventListeners();
 
