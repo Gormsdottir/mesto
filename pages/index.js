@@ -24,15 +24,8 @@ import {
 } from "../utils/constants.js";
 
 
-// открытие попапа с картинкой
-const imagePopup = new PopupWithImage(popupImage);
-imagePopup.setEventListeners();
-
-function handleImageOpen(data) {
-  imagePopup.open(data);
-}
-
 // создание карточек
+
 function createCard(item) {
   const card = new Card(item, '#cards-template', handleImageOpen);
   return card.generateCard();
@@ -48,6 +41,14 @@ const cardList = new Section({
 cardsContainer);
 
 cardList.renderItems();
+
+// открытие попапа с картинкой
+const imagePopup = new PopupWithImage(popupImage);
+imagePopup.setEventListeners();
+
+function handleImageOpen(data) {
+  imagePopup.open(data);
+}
 
 // добавление информации о пользователе
 
@@ -71,6 +72,13 @@ popupEditForm.setEventListeners();
 const popupAddCardForm = new PopupWithForm(popupAddCard, submitAddCardForm);
 popupAddCardForm.setEventListeners();
 
+// валидация форм
+const popupEditFormVal = new FormValidator(validationConfig, popupEdit);
+popupEditFormVal.enableValidation();
+
+const popupAddCardVal = new FormValidator(validationConfig, popupFormAddCard);
+popupAddCardVal.enableValidation();
+
 function submitEditForm(data) {
   userInfo.setUserInfo(data);
   userInfo.updateUserInfo();
@@ -86,6 +94,8 @@ function submitAddCardForm({title, image}) {
   popupAddCardForm.close();
 }
 
+// кнопки открытия попапов
+
 btnEditProfile.addEventListener('click', () => {
   const user = userInfo.getUserInfo();
   profileName.value = user.name;
@@ -98,10 +108,3 @@ btnAddCard.addEventListener('click', () => {
   popupAddCardVal.disableSubmitButton();
   popupAddCardForm.open();
 })
-
-// валидация форм
-const popupEditFormVal = new FormValidator(validationConfig, popupEdit);
-popupEditFormVal.enableValidation();
-
-const popupAddCardVal = new FormValidator(validationConfig, popupFormAddCard);
-popupAddCardVal.enableValidation();
