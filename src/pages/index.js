@@ -24,16 +24,18 @@ import {
 
 import {
   popupEdit,
+  popupFormEditProfile,
   btnEditProfile,
   profileName,
   profileOccupation,
+  profileNameInput,
+  profileOccupationInput,
   popupFormAddCard,
   popupAddCard,
   btnAddCard,
   popupImage,
-  btnCloseImage,
   cardsContainer,
-  validationConfig,
+  validationConfig
 } from "../utils/constants.js";
 
 
@@ -75,7 +77,6 @@ userInfo.setUserInfo({
   occupation: 'Исследователь тайн мироздания'
 });
 
-userInfo.updateUserInfo();
 
 // действия с попапами изменения информации и добавления карточек 
 
@@ -86,7 +87,7 @@ const popupAddCardForm = new PopupWithForm(popupAddCard, submitAddCardForm);
 popupAddCardForm.setEventListeners();
 
 // валидация форм
-const popupEditFormVal = new FormValidator(validationConfig, popupEdit);
+const popupEditFormVal = new FormValidator(validationConfig, popupFormEditProfile);
 popupEditFormVal.enableValidation();
 
 const popupAddCardVal = new FormValidator(validationConfig, popupFormAddCard);
@@ -94,7 +95,6 @@ popupAddCardVal.enableValidation();
 
 function submitEditForm(data) {
   userInfo.setUserInfo(data);
-  userInfo.updateUserInfo();
   popupEditForm.close();
 }
 
@@ -110,9 +110,9 @@ function submitAddCardForm({title, image}) {
 // кнопки открытия попапов
 
 btnEditProfile.addEventListener('click', () => {
-  const user = userInfo.getUserInfo();
-  profileName.value = user.name;
-  profileOccupation.value = user.occupation;
+  const userData = userInfo.getUserInfo();
+  profileNameInput.value = userData.name;
+  profileOccupationInput.value = userData.occupation;
   popupEditFormVal.enableSubmitButton();
   popupEditForm.open();
 })

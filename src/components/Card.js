@@ -6,6 +6,7 @@ export default class Card {
         this._handleCardClick = handleCardClick;
     }
 
+    // получение template новой карточки
     _getTemplate() {
         const cardElement = document
         .querySelector(this._cardSelector)
@@ -16,6 +17,7 @@ export default class Card {
         return cardElement;
     }
 
+    // установка слушателей
     _setEventListeners() {
         this._element
         .querySelector('.card__image')
@@ -38,18 +40,20 @@ export default class Card {
         });
     }
 
+    // лайк карточки
     _handleCardLike() {
         const btnLike = this._element.querySelector('.button_type_like');
 
         btnLike.classList.toggle('button_type_like_active');
     }
 
+    // удаление карточки
     _handleCardDelete() {
         this._element
-        .closest('.card')
         .remove();
     }
 
+    // создание карточки
     generateCard() {
         this._element = this._getTemplate();
 

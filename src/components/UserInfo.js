@@ -1,25 +1,24 @@
 export default class UserInfo {
   constructor({userNameSelector, userDataSelector}) {
-    this._nameElement = userNameSelector;
-    this._infoElement = userDataSelector;
+    this._nameElement = document.querySelector(userNameSelector);
+    this._infoElement = document.querySelector(userDataSelector);
     this._name = null;
     this._occupation = null;
   }
 
+  // получение данных пользователя в форму
   getUserInfo() {
-    return {
-      name: this._name,
-      occupation: this._occupation
-    }
+    this._userData = {
+      name: this._nameElement.textContent,
+      occupation: this._infoElement.textContent
+    };
+
+    return this._userData;
   }
   
-  setUserInfo({name, occupation}) {
-    name && (this._name = name);
-    occupation && (this._occupation = occupation);
-  }
-
-  updateUserInfo() {
-    this._nameElement.textContent = this._name;
-    this._infoElement.textContent = this._occupation;
+  //сохранение новых данных пользователя в форме
+  setUserInfo(data) {
+    this._nameElement.textContent = data.name;
+    this._infoElement.textContent = data.occupation;
   }
 }
