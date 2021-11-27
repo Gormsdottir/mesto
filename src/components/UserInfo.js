@@ -12,6 +12,7 @@ export default class UserInfo {
       occupation: this._occupation
     }
   }
+  
   setUserInfo({name, occupation}) {
     name && (this._name = name);
     occupation && (this._occupation = occupation);

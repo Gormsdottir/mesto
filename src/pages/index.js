@@ -1,5 +1,16 @@
 import '../pages/index.css'
 
+// теперь картинки можно импортировать,
+// вебпак добавит в переменные правильные пути
+import logo from '../images/logo.svg';
+import profileIcon from '../images/catIcon.jpg';
+
+const whoIsTheGoat = [
+  // меняем исходные пути на переменные
+  { name: 'Michael Jordan', image: logo },
+  { name: 'Lebron James', link: profileIcon },
+];
+
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
