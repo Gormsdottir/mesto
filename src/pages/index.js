@@ -198,6 +198,6 @@ api.getAllData()
         userInfo.setUserInfo(userData)
         userId = userData._id
 
-        cardList.render(cards)
+        cardList.generateCard(cards)
     })
     .catch((err) => console.log(err))
