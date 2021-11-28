@@ -10,25 +10,25 @@ export default class PopupWithConfirm extends Popup {
 
     // установка слушателей
     setEventListeners() {
-        super.setEventListeners();
-
+        super.setEventListeners()
+    
         this._confirmForm.addEventListener('submit', (evt) => {
-            evt.preventDefault();
-            this._handleSubmit();
-        });
+          evt.preventDefault()
+          this._handleSubmitCallback()
+        })
     }
 
     // установка действия по нажатию кнопки подтверждения
     setSubmitAction(action) {
-        this._handleSubmit = action;
+        this._handleSubmitCallback = action
     }
 
     // отображение текста загрузки
     renderLoading(isLoading) {
         if(isLoading) {
-            this._confirmBtn.textContent = 'Сохранение...';
+          this._confirmBtn.textContent = 'Сохранение...'
         } else {
-            this._confirmBtn.textContent = this._confirmBtnText;
+          this._confirmBtn.textContent = this._confirmBtnText
         }
-    }
+      }
 }

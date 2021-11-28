@@ -17,6 +17,7 @@ const popupImage = '.popup_type_image';
 
 // попап изменения аватара
 const popupEditAvatar = '.popup_type_edit-avatar';
+const popupAvatar = '.profile__image';
 const popupFormEditAvatar = document.querySelector('.popup__edit-avatar-form');
 const btnEditAvatar = document.querySelector('.button_type_edit_avatar');
 
@@ -51,6 +52,7 @@ export {
   btnAddCard,
   popupImage,
   popupEditAvatar,
+  popupAvatar,
   popupFormEditAvatar,
   btnEditAvatar,
   popupConfirmDelete,

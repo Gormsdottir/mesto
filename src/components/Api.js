@@ -1,57 +1,65 @@
-class Api {
-    constructor(options) {
-      this._url = options.url;
-      this._headers = options.headers;
-    }
+export default class Api {
+  constructor(options) {
+    this._url = options.url;
+    this._headers = options.headers;
+  }
 
-    _checkResponse(res) {
-      if (res.ok) {
-        return res.json()
-      }
-      return Promise.reject(`Ошибка: ${res.status}`)
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json()
     }
+    return Promise.reject(`Ошибка: ${res.status}`)
+  }
 
-    getUserInfo() {
-      return fetch(this._url + '/users/me', {
+  getUserInfo() {
+    return fetch(`${this._url}/users/me`, {
         method: 'GET',
-        headers: this._headers
+        headers: this._headers,
       })
-        .then(this._checkResponse)
-    }
-    
-    setUserInfoApi(userData) {
-      return fetch(this._url + '/users/me', {
+      .then((res) => {
+        return this._checkResponse(res)
+      });
+  }
+
+  setUserInfoApi(userInfo) {
+    return fetch(`${this._url}/users/me`, {
         method: 'PATCH',
         headers: this._headers,
         body: JSON.stringify({
-          name: userData.userName,
-          about: userData.userAbout
+          name: userInfo.name,
+          occupation: userInfo.occupation
         })
       })
-      .then(this._checkResponse)
-    }
+      .then((res) => {
+        return this._checkResponse(res)
+      });
+  }
 
-    handleUserAvatar(data) {
-      return fetch(this._url + '/users/me/avatar', {
+  handleUserAvatar(data) {
+    return fetch(`${this._url}/users/me/avatar`, {
         method: 'PATCH',
         headers: this._headers,
         body: JSON.stringify({
           avatar: data.userAvatar,
         })
       })
-      .then(this._checkResponse)
-    }
-    
-    getInitialCards() {
-      return fetch(this._url + '/cards', {
+      .then((res) => {
+        return this._checkResponse(res)
+      });
+  }
+
+  getOwnerCards() {
+    return fetch(`${this._url}/cards`, {
         method: 'GET',
         headers: this._headers
       })
-      .then(this._checkResponse)
-    }
-  
-    addUserCard(data) {
-      return fetch(this._url + '/cards', {
+      .then((res) => {
+        return this._checkResponse(res)
+      });
+  }
+
+  addUserCard(data) {
+    return fetch(`${this._url}/cards`, {
         method: 'POST',
         headers: this._headers,
         body: JSON.stringify({
@@ -59,34 +67,42 @@ class Api {
           link: data.link
         })
       })
-      .then(this._checkResponse)
-    }
-  
-    like(id) {
-      return fetch(this._url + `/cards/likes/${id}`, {
+      .then((res) => {
+        return this._checkResponse(res)
+      });
+  }
+
+  like(data) {
+    return fetch(`${this._url}/cards/${data._id}`, {
         method: 'PUT',
         headers: this._headers
       })
-      .then(this._checkResponse)
-    }
-  
-    dislike(id) {
-      return fetch(this._url + `/cards/likes/${id}`, {
+      .then((res) => {
+        return this._checkResponse(res)
+      });
+  }
+
+  dislike(data) {
+    return fetch(`${this._url}/cards/${data._id}`, {
         method: 'DELETE',
         headers: this._headers
       })
-      .then(this._checkResponse)
-    }
-  
-    delete(id) {
-      return fetch(this._url + `/cards/${id}`, {
+      .then((res) => {
+        return this._checkResponse(res)
+      });
+  }
+
+  delete(data) {
+    return fetch(`${this._url}/cards/${data._id}`, {
         method: 'DELETE',
         headers: this._headers
       })
-      .then(this._checkResponse)
-    }
-  
-    getAllData() {
-      return Promise.all([this.getInitialCards(), this.getUserInfo()])
-    }
+      .then((res) => {
+        return this._checkResponse(res)
+      });
+  }
+
+  getAllData() {
+    return Promise.all([this.getOwnerCards(), this.getUserInfo()])
+  }
 }

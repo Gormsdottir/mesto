@@ -5,12 +5,10 @@ export default class Section {
     }
   
     // отрисовка элементов
-    renderItems() {
-        this._items.reverse().forEach((item) => {
-            this.renderer(item); 
-      });
+    renderItems(items) {
+      items.reverse().forEach(item => this._renderer(item));
     }
-    
+
     // добавление dom-элемента в контейнет
     addItem(element) {
       this._containerSelector.prepend(element);
