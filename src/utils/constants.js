@@ -15,8 +15,19 @@ const btnAddCard = document.querySelector('.button_type_add-card');
 // попап с картинкой
 const popupImage = '.popup_type_image';
 
+// попап изменения аватара
+const popupEditAvatar = '.popup_type_edit-avatar';
+const popupFormEditAvatar = document.querySelector('.popup__edit-avatar-form');
+const btnEditAvatar = document.querySelector('.button_type_edit_avatar');
+
+// попап подтверждения удаления
+const popupConfirmDelete = '.popup_type_confirm';
+
 // сетка карточек
 const cardsContainer = '.cards__grid';
+
+// template карточек
+const cardSelector = '#cards-template';
 
 // конфигурация для валидации
 const validationConfig = {
@@ -39,6 +50,11 @@ export {
   popupAddCard,
   btnAddCard,
   popupImage,
+  popupEditAvatar,
+  popupFormEditAvatar,
+  btnEditAvatar,
+  popupConfirmDelete,
   cardsContainer,
+  cardSelector,
   validationConfig
 }

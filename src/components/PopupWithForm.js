@@ -8,6 +8,8 @@ export default class PopupWithForm extends Popup {
         this._form = this._popup.querySelector('.form');
         this._inputList = Array.from(this._form.querySelectorAll('.popup__input'));
 
+        this._popupBtn = this._popup.querySelector('.popup__submit');
+        this._popupBtnTextContent = this._popupBtn.textContent;
     }
 
     // сбор данных полей формы
@@ -23,6 +25,15 @@ export default class PopupWithForm extends Popup {
     close() {
         super.close();
         this._form.reset();
+    }
+
+    // отображение текста загрузки
+    renderLoading(isLoading) {
+        if(isLoading) {
+          this._popupBtn.textContent = 'Сохранение...';
+        } else {
+          this._popupBtn.textContent = this._popupBtnTextContent;
+        }
     }
 
     // добавление слушателей попапа формы

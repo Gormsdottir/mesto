@@ -1,9 +1,8 @@
 .profile__image {
-    grid-area: image;
-    max-width: 120px;
-    justify-self: start;
-    align-self: center;
     border-radius: 50%;
+    height: 120px;
+    object-fit: cover;
+    width: 120px;
 }
 
 @media all and (max-width: 767px) {

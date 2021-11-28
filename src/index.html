@@ -21,15 +21,14 @@
 
             <section class="profile">
 
-                <img src="<%=require('./images/catIcon.jpg')%>" class="profile__image" alt="аватар профиля">
+                <div class="profile__avatar">
+                    <img src="<%=require('./images/catIcon.jpg')%>" class="profile__image" alt="аватар профиля">
+                    <button type="button" class="button_type_edit_avatar button"></button>
+                </div>
 
-                <h1 class="profile__name">
-                    Кот и его человек
-                </h1>
+                <h1 class="profile__name">Кот и его человек</h1>
 
-                <p class="profile__occupation">
-                    Исследователь тайн мироздания
-                </p>
+                <p class="profile__occupation">Исследователь тайн мироздания</p>
 
                 <button type="button" class="button_type_edit-profile button" aria-label="Изменить"></button>
 
@@ -78,6 +77,28 @@
 
         </div>
 
+        
+        <div class="popup popup_type_edit-avatar">
+
+            <div class="popup__container">
+                <button type="button" class="button_type_close-edit-avatar-popup button_type_close button"></button>
+
+                <h2 class="popup__title">
+                    Обновить аватар
+                </h2>
+                <form novalidate class="form popup__edit-avatar-form" name="editavatarform">
+                    <div class="popup__area">
+                        <input id="avatar" type="url" autocomplete="off" required name="avatar"
+                            class="popup__input popup__input_type_avatar" placeholder="Ссылка на картинку" value="" />
+                        <span id="avatar-error" class="error"></span>
+                    </div>
+
+                    <button type="submit" class="button popup__submit popup__submit_edit">Сохранить</button>
+                </form>
+            </div>
+
+        </div>
+
         <div class="popup popup_type_add-card">
 
             <div class="popup__container">
@@ -104,6 +125,22 @@
 
         </div>
 
+        <div class="popup popup_type_confirm">
+
+            <div class="popup__container">
+                <button type="button" class="button_type_close-confirm-popup button_type_close button"></button>
+
+                <h2 class="popup__title">
+                    Вы уверены?
+                </h2>
+
+                <form novalidate class="form popup__confirm-form" name="confirmform">
+                    <button type="submit" class="button popup__submit popup__submit_confirm">Да</button>
+                </form>
+            </div>
+
+        </div>
+
         <div class="popup popup_type_image">
             <div class="popup__container popup__container_type_image">
                 <button type="button" class="button button_type_close-image button_type_close"></button>
@@ -119,12 +156,14 @@
         <li class="card">
             <img class="card__image">
             <h3 class="card__title"></h3>
-            <button class="button button_type_like"></button>
+            <div class="card__like">
+                <button class="button">button_type_like"></button>
+                <span class="card__like-count">0</span>
+            </div>
             <button class="button button_type_delete"></button>
         </li>
     </template>
 
-       <script type="module" src="./pages/index.js"></script>
 </body>
 
 </html>
