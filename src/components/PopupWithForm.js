@@ -24,7 +24,6 @@ export default class PopupWithForm extends Popup {
     // закрытие попапа формы
     close() {
         super.close();
-        this._form.reset();
     }
 
     // отображение текста загрузки
@@ -42,6 +41,7 @@ export default class PopupWithForm extends Popup {
         this._form.addEventListener('submit', (e) => {
             e.preventDefault();
             this._submitCallback(this._getInputValues());
+            this._form.reset();
         });
     }
 }
