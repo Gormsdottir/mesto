@@ -49,7 +49,7 @@ const api = new Api({
 //     handleLikeClick: _ => card.handleCardLike(data._id),
 //     handleConfirmDelete: _ => {
 //       popupConfirmDeleteForm.setSubmitAction( _ => {
-//         popupConfirmDeleteForm.renderLoading(true)
+//         popupConfirmDeleteForm.renderLoadingWhileDeleting(true)
 //         api.delete(data._id)
 //           .then( _ => {
 //             card.handleCardDelete()
@@ -58,7 +58,7 @@ const api = new Api({
 //           .catch((err) => 
 //           console.log(err))
 //           .finally( _ => 
-//             popupConfirmDeleteForm.renderLoading(false))
+//             popupConfirmDeleteForm.renderLoadingWhileDeleting(false))
 //       })
 //       popupConfirmDeleteForm.open()
 //     }
