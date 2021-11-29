@@ -28,7 +28,6 @@ import {
   btnEditAvatar,
   popupConfirmDelete,
   cardsContainer,
-  cardSelector,
   validationConfig
 } from "../utils/constants.js";
 
