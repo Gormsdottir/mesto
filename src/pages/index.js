@@ -28,6 +28,7 @@ import {
   btnEditAvatar,
   popupConfirmDelete,
   cardsContainer,
+  cardSelector,
   validationConfig
 } from "../utils/constants.js";
 
@@ -42,33 +43,33 @@ const api = new Api({
 
 // создание карточек
 
-// const createCard = (data) => {
-//   const card = new Card({
-//     data: data,
-//     handleCardClick: _ => imagePopup.open(data),
-//     handleLikeClick: _ => card.handleCardLike(data._id),
-//     handleConfirmDelete: _ => {
-//       popupConfirmDeleteForm.setSubmitAction( _ => {
-//         popupConfirmDeleteForm.renderLoading(true)
-//         api.delete(data._id)
-//           .then( _ => {
-//             card.handleCardDelete()
-//             popupConfirmDeleteForm.close()
-//           })
-//           .catch((err) => 
-//           console.log(err))
-//           .finally( _ => 
-//             popupConfirmDeleteForm.renderLoading(false))
-//       })
-//       popupConfirmDeleteForm.open()
-//     }
-//   },
-//   cardSelector,
-//   api,
-//   userId
-//   )
-//   return card.generateCard()
-// }
+const createCard = (data) => {
+  const card = new Card({
+    data: data,
+    handleCardClick: _ => imagePopup.open(data),
+    handleLikeClick: _ => card.handleCardLike(data._id),
+    handleConfirmDelete: _ => {
+      popupConfirmDeleteForm.setSubmitAction( _ => {
+        popupConfirmDeleteForm.renderLoading(true)
+        api.delete(data._id)
+          .then( _ => {
+            card.handleCardDelete()
+            popupConfirmDeleteForm.close()
+          })
+          .catch((err) => 
+          console.log(err))
+          .finally( _ => 
+            popupConfirmDeleteForm.renderLoading(false))
+      })
+      popupConfirmDeleteForm.open()
+    }
+  },
+  cardSelector,
+  api,
+  userId
+  )
+  return card.generateCard()
+}
 
 const cardList = new Section( {
   renderer: item => {
