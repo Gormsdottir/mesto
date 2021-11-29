@@ -13,6 +13,15 @@ export default class Card {
         this._cardSelector = cardSelector;
         this._api = api;
         this._userId = userId;
+
+        this._cardName = document.querySelector('.card__title');
+        this._cardImage = document.querySelector('.card__image');
+        this._count = document.querySelector('.card__like-count');
+
+        this._btnDelete = document.querySelector('.button_type_delete');
+        this._btnLike = document.querySelector('.button_type_like');
+
+
     }
 
     // получение template новой карточки
@@ -86,21 +95,22 @@ export default class Card {
     // создание карточки
     generateCard() {
         this._getCardTemplate()
-        this._setEventListeners()
-
-        this._element.querySelector('.card__title').textContent = this._name;
-        this._element.querySelector('.card__image').src = this._link;
-        this._element.querySelector('.card__image').alt = `фото: ${this._name}`;
+        
+        this._cardName.textContent = this._name;
+        this._cardImage.src = this._link;
+        this._cardImage.alt = `фото: ${this._name}`;
     
-        this._element.querySelector('.card__like-count').textContent = this._likes.length
+        this._count.textContent = this._likes.length;
     
         if(!(this._ownerId === this._userId)) {
-          this._element.querySelector('.button_type_delete').style.display = 'none'
+          this._btnDelete.style.display = 'none'
         }
         
         if(this._likes.find((obj) => this._userId === obj._id)) {
-          this._element.querySelector('.button_type_like').classList.add('button_type_like_active')
+          this._btnLike.classList.add('button_type_like_active')
         }
+
+        this._setEventListeners()
     
         return this._element;
       }   
