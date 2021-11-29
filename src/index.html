@@ -22,13 +22,13 @@
             <section class="profile">
 
                 <div class="profile__avatar">
-                    <img src="<%=require('./images/catIcon.jpg')%>" class="profile__image" alt="аватар профиля">
+                    <img src="#" class="profile__image" alt="аватар профиля">
                     <button type="button" class="button_type_edit_avatar button"></button>
                 </div>
 
-                <h1 class="profile__name">Кот и его человек</h1>
+                <h1 class="profile__name"></h1>
 
-                <p class="profile__occupation">Исследователь тайн мироздания</p>
+                <p class="profile__occupation"></p>
 
                 <button type="button" class="button_type_edit-profile button" aria-label="Изменить"></button>
 
@@ -66,10 +66,10 @@
                         <span id="name-error" class="error"></span>
                     </div>
                     <div class="popup__area">
-                        <input id="occupation" type="text" autocomplete="off" required name="occupation"
+                        <input id="about" type="text" autocomplete="off" required name="about"
                             class="popup__input popup__input_type_occupation" placeholder="О себе" value=""
                             minlength="2" maxlength="200" />
-                        <span id="occupation-error" class="error"></span>
+                        <span id="about-error" class="error"></span>
                     </div>
                     <button type="submit" class="button popup__submit popup__submit_edit">Сохранить</button>
                 </form>
@@ -157,7 +157,7 @@
             <img class="card__image">
             <h3 class="card__title"></h3>
             <div class="card__like">
-                <button class="button">button_type_like"></button>
+                <button class="button button_type_like"></button>
                 <span class="card__like-count">0</span>
             </div>
             <button class="button button_type_delete"></button>

@@ -22,17 +22,19 @@ export default class Api {
   }
 
   setUserInfoApi(userInfo) {
+    console.log(userInfo)
     return fetch(`${this._url}/users/me`, {
         method: 'PATCH',
         headers: this._headers,
         body: JSON.stringify({
           name: userInfo.name,
-          occupation: userInfo.occupation
+          about: userInfo.about
         })
       })
       .then((res) => {
         return this._checkResponse(res)
       });
+      
   }
 
   handleUserAvatar(data) {
@@ -40,7 +42,7 @@ export default class Api {
         method: 'PATCH',
         headers: this._headers,
         body: JSON.stringify({
-          avatar: data.userAvatar,
+          avatar: data.avatar,
         })
       })
       .then((res) => {
@@ -63,8 +65,8 @@ export default class Api {
         method: 'POST',
         headers: this._headers,
         body: JSON.stringify({
-          name: data.name,
-          link: data.link
+          name: data.title,
+          link: data.image
         })
       })
       .then((res) => {
@@ -72,28 +74,24 @@ export default class Api {
       });
   }
 
-  like(data) {
-    return fetch(`${this._url}/cards/${data._id}`, {
-        method: 'PUT',
-        headers: this._headers
-      })
-      .then((res) => {
-        return this._checkResponse(res)
-      });
+  like(id) {
+    return fetch(this._url + `/cards/likes/${id}`, {
+      method: 'PUT',
+      headers: this._headers
+    })
+    .then(this._checkResponse)
   }
 
-  dislike(data) {
-    return fetch(`${this._url}/cards/${data._id}`, {
-        method: 'DELETE',
-        headers: this._headers
-      })
-      .then((res) => {
-        return this._checkResponse(res)
-      });
+  dislike(id) {
+    return fetch(this._url + `/cards/likes/${id}`, {
+      method: 'DELETE',
+      headers: this._headers
+    })
+    .then(this._checkResponse)
   }
 
-  delete(data) {
-    return fetch(`${this._url}/cards/${data._id}`, {
+  delete(dataId) {
+    return fetch(`${this._url}/cards/${dataId}`, {
         method: 'DELETE',
         headers: this._headers
       })

@@ -47,10 +47,10 @@ const createCard = (data) => {
   const card = new Card({
     data: data,
     handleCardClick: _ => imagePopup.open(data),
-    handleLikeClick: _ => card.handleLikeCard(),
+    handleLikeClick: _ => card.handleCardLike(data._id),
     handleConfirmDelete: _ => {
       popupConfirmDeleteForm.setSubmitAction( _ => {
-        popupConfirmDeleteForm.renderLoadingWhileDeleting(true)
+        popupConfirmDeleteForm.renderLoading(true)
         api.delete(data._id)
           .then( _ => {
             card.handleCardDelete()
@@ -68,14 +68,13 @@ const createCard = (data) => {
   api,
   userId
   )
-  return card
+  return card.generateCard()
 }
 
 const cardList = new Section( {
   renderer: item => {
-    const card = createCard(item)
-    const cardElement = card.renderCard()
-    cardList.addItem(cardElement)
+    const card = createCard(item);
+    cardList.addItem(card);
   } }, 
   cardsContainer
 )
@@ -85,7 +84,7 @@ const cardList = new Section( {
 
 const userInfo = new UserInfo({
   name: profileName,
-  occupation: profileOccupation,
+  about: profileOccupation,
   avatar: popupAvatar
 });
 
@@ -133,9 +132,8 @@ const popupAddCardForm = new PopupWithForm(popupAddCard, formValues => {
   api.addUserCard(formValues)
     .then((data) => {
       const card = createCard(data)
-      const cardElement = card.generateCard()
-      cardList.addItem(cardElement)
-      cardAddFormValidator.disableSubmitButton()
+      cardList.addItem(card)
+      popupAddCardVal.disableSubmitButton()
       popupAddCardForm.close()
     })
     .catch((err) => console.log(err))
@@ -173,7 +171,7 @@ popupConfirmDeleteForm.setEventListeners();
 btnEditProfile.addEventListener('click', () => {
   const userData = userInfo.getUserInfo();
   profileNameInput.value = userData.name;
-  profileOccupationInput.value = userData.occupation;
+  profileOccupationInput.value = userData.about;
   popupEditFormVal.enableSubmitButton();
   popupEditForm.open();
 })
@@ -189,7 +187,7 @@ btnAddCard.addEventListener('click', () => {
 })
 
 
-// отображение начальной информации
+//отображение начальной информации
 
 let userId;
 
@@ -198,6 +196,6 @@ api.getAllData()
         userInfo.setUserInfo(userData)
         userId = userData._id
 
-        cardList.render(cards)
+        cardList.renderItems(cards)
     })
     .catch((err) => console.log(err))
