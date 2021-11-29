@@ -43,7 +43,6 @@ const api = new Api({
 
 // создание карточек
 
-<<<<<<< HEAD
 const createCard = (data) => {
   const card = new Card({
     data: data,
