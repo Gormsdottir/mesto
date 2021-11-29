@@ -43,6 +43,7 @@ const api = new Api({
 
 // создание карточек
 
+<<<<<<< HEAD
 const createCard = (data) => {
   const card = new Card({
     data: data,
@@ -50,7 +51,7 @@ const createCard = (data) => {
     handleLikeClick: _ => card.handleCardLike(data._id),
     handleConfirmDelete: _ => {
       popupConfirmDeleteForm.setSubmitAction( _ => {
-        popupConfirmDeleteForm.renderLoading(true)
+        popupConfirmDeleteForm.renderLoadingWhileDeleting(true)
         api.delete(data._id)
           .then( _ => {
             card.handleCardDelete()
@@ -59,7 +60,7 @@ const createCard = (data) => {
           .catch((err) => 
           console.log(err))
           .finally( _ => 
-            popupConfirmDeleteForm.renderLoading(false))
+            popupConfirmDeleteForm.renderLoadingWhileDeleting(false))
       })
       popupConfirmDeleteForm.open()
     }
