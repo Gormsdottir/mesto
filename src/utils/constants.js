@@ -19,7 +19,7 @@ const popupImage = '.popup_type_image';
 const popupEditAvatar = '.popup_type_edit-avatar';
 const popupAvatar = '.profile__image';
 const popupFormEditAvatar = document.querySelector('.popup__edit-avatar-form');
-const btnEditAvatar = document.querySelector('.button_type_edit_avatar');
+const btnEditAvatar = document.querySelector('.button_type_edit-avatar');
 
 // попап подтверждения удаления
 const popupConfirmDelete = '.popup_type_confirm';
