@@ -24,7 +24,7 @@ export default class PopupWithConfirm extends Popup {
     }
 
     // отображение текста загрузки
-    renderLoading(isLoading) {
+    renderLoadingWhileDeleting(isLoading) {
         if(isLoading) {
           this._confirmBtn.textContent = 'Удаление...'
         } else {
