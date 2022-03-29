@@ -1,7 +1,7 @@
 export default class Section {
     constructor({ renderer }, containerSelector) {
       this._renderer = renderer;
-      this._containerSelector = document.querySelector(containerSelector);
+      this._container = document.querySelector(containerSelector);
     }
   
     // отрисовка элементов
@@ -11,6 +11,6 @@ export default class Section {
 
     // добавление dom-элемента в контейнет
     addItem(element) {
-      this._containerSelector.prepend(element);
+      this._container.prepend(element);
     }
   }
